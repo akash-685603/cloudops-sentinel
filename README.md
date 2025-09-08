@@ -33,8 +33,3 @@ docker run -p 5000:5000 cloudops-sentinel:local
 ```bash
 python -c "from cloudops_sentinel import scheduler; scheduler.run_loop(60)"
 ```
-
-## Notes for presenters
-- Show `/metrics` output (curl) as demo of monitoring.
-- Show GitHub Actions run + Trivy scan results for security story.
-- Add a short recording/GIF to your LinkedIn post: show alert firing, S3 upload, and CI pipeline.
