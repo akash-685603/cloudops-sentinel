@@ -5,3 +5,6 @@ boto3
 schedule
 python-dotenv
 pytest
+setuptools>=78.1.1
+flask>=2.2.5
+psutil>=5.9.0
