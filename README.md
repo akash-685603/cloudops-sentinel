@@ -1,10 +1,8 @@
-**CloudOps Sentinel 🚀
-**
-A compact Python-based DevOps toolkit for monitoring, alerting, packaging, and cloud automation.
-Designed as a portfolio-ready project to showcase modern DevOps practices with CI/CD, containerization, and cloud integration.
+CloudOps Sentinel 🚀
+A compact Python-based DevOps toolkit for monitoring, alerting, packaging, and cloud automation. This project is designed as a portfolio-ready demonstration of modern DevOps practices, integrating CI/CD, containerization, and cloud integration for real-world reliability and scalability.
 
-**Architecture Overview
-**
+Architecture Overview
+
           +--------------------+
           |   Flask API        |
           |  /health /metrics  |
@@ -29,35 +27,58 @@ Designed as a portfolio-ready project to showcase modern DevOps practices with C
              | Scheduler     |
              | Periodic Jobs |
              +---------------+
+Flask API: Exposes /health and /metrics endpoints for real-time monitoring.
 
-Flask API: Exposes /health and /metrics endpoints for monitoring.
+Metrics Collector: Gathers system metrics using psutil with CI-safe dummy fallbacks.
 
-Metrics Collector: Gathers system metrics using psutil, with CI-safe fallbacks.
-
-Alerting: Sends notifications via Slack and email when anomalies are detected.
+Alerting: Sends notifications via Slack and email on anomalies.
 
 Scheduler: Automates periodic health checks, metric collection, and alerting.
 
-Log Backup: Uploads logs securely to S3 for auditing and retention.
+Log Backup: Securely uploads logs to S3 for auditing and retention.
 
+DevOps Integrations
+Containerization: Docker & Docker Compose for consistent, reproducible environments.
 
-**DevOps Integrations
-**
-Containerization: Docker + docker-compose for consistent environments
+CI/CD: GitHub Actions pipeline automates testing, builds, and Trivy security scanning.
 
-CI/CD: GitHub Actions pipeline with testing, build automation, and Trivy security scanning
+Security: Automated vulnerability scans keep deployments production-ready.
 
-Security: Automated vulnerability scanning ensures production-ready deployments
+Portfolio Ready: End-to-end workflow illustrates cloud monitoring best practices.
 
-Portfolio Ready: Demonstrates end-to-end cloud monitoring workflow
+Project Highlights
+Lightweight Python toolkit for cloud ops monitoring
 
-
-**Project Highlights
-**
-Lightweight Python-based monitoring toolkit for cloud ops
-
-Fully modular and extensible architecture
+Modular and extensible system by design
 
 Integrates monitoring, alerting, backup, and CI/CD in a single project
 
-Perfect for portfolio showcase or LinkedIn demo
+Perfect fit for portfolio presentations and LinkedIn demos
+
+Getting Started
+Clone the repo and spin up the development environment using Docker or directly with Python & Flask.
+Configure integrations and scheduler as per your cloud provider and notification preferences.
+
+
+# Start with Docker (recommended)
+docker-compose up
+
+# Or run locally
+python app.py
+Tech Stack
+Python 3.x
+
+Flask (REST API)
+
+psutil (Metrics Collection)
+
+Docker, Docker Compose
+
+GitHub Actions
+
+Trivy (Security Scan)
+
+Slack, AWS S3 (Integrations)
+
+License
+This project is open-source and available under the MIT License.
