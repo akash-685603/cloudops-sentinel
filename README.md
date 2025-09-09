@@ -1,35 +1,62 @@
-# CloudOps Sentinel
+CloudOps Sentinel 🚀
 
-A compact Python-based DevOps toolkit demonstrating monitoring, alerting, packaging, and cloud automation.
-This repo is purpose-built to be a GitHub portfolio project and LinkedIn demo.
+A compact Python-based DevOps toolkit for monitoring, alerting, packaging, and cloud automation.
+Designed as a portfolio-ready project to showcase modern DevOps practices with CI/CD, containerization, and cloud integration.
 
-## What's included
-- Flask API exposing `/health` and `/metrics`
-- `metrics` wrapper using psutil (falls back to dummy values for CI)
-- Slack & email alerts helpers
-- Scheduler to run periodic checks
-- S3 upload helper for log backups
-- Dockerfile + docker-compose example
-- GitHub Actions CI with pytest + Trivy security scan
+Architecture Overview
+          +--------------------+
+          |   Flask API        |
+          |  /health /metrics  |
+          +---------+----------+
+                    |
+                    v
+          +--------------------+
+          | Metrics Collector  |
+          | (psutil / dummy)   |
+          +---------+----------+
+                    |
+         +----------+-----------+
+         |                      |
+         v                      v
++----------------+       +----------------+
+| Alerting       |       | Log Backup     |
+| Slack / Email  |       | S3 Upload      |
++----------------+       +----------------+
+                    |
+                    v
+             +---------------+
+             | Scheduler     |
+             | Periodic Jobs |
+             +---------------+
 
-## Quickstart (local dev)
-```bash
-# create venv and install
-python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
+Flask API: Exposes /health and /metrics endpoints for monitoring.
 
-# run the API
-python -m cloudops_sentinel.api
-# open http://localhost:5000/metrics
-```
+Metrics Collector: Gathers system metrics using psutil, with CI-safe fallbacks.
 
-## Docker
-```bash
-docker build -t cloudops-sentinel:local .
-docker run -p 5000:5000 cloudops-sentinel:local
-```
+Alerting: Sends notifications via Slack and email when anomalies are detected.
 
-## Running the scheduler locally
-```bash
-python -c "from cloudops_sentinel import scheduler; scheduler.run_loop(60)"
-```
+Scheduler: Automates periodic health checks, metric collection, and alerting.
+
+Log Backup: Uploads logs securely to S3 for auditing and retention.
+
+
+DevOps Integrations
+
+Containerization: Docker + docker-compose for consistent environments
+
+CI/CD: GitHub Actions pipeline with testing, build automation, and Trivy security scanning
+
+Security: Automated vulnerability scanning ensures production-ready deployments
+
+Portfolio Ready: Demonstrates end-to-end cloud monitoring workflow
+
+
+Project Highlights
+
+Lightweight Python-based monitoring toolkit for cloud ops
+
+Fully modular and extensible architecture
+
+Integrates monitoring, alerting, backup, and CI/CD in a single project
+
+Perfect for portfolio showcase or LinkedIn demo
