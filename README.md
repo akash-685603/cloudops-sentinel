@@ -1,9 +1,10 @@
-CloudOps Sentinel 🚀
-
+**CloudOps Sentinel 🚀
+**
 A compact Python-based DevOps toolkit for monitoring, alerting, packaging, and cloud automation.
 Designed as a portfolio-ready project to showcase modern DevOps practices with CI/CD, containerization, and cloud integration.
 
-Architecture Overview
+**Architecture Overview
+**
           +--------------------+
           |   Flask API        |
           |  /health /metrics  |
@@ -40,8 +41,8 @@ Scheduler: Automates periodic health checks, metric collection, and alerting.
 Log Backup: Uploads logs securely to S3 for auditing and retention.
 
 
-DevOps Integrations
-
+**DevOps Integrations
+**
 Containerization: Docker + docker-compose for consistent environments
 
 CI/CD: GitHub Actions pipeline with testing, build automation, and Trivy security scanning
@@ -51,8 +52,8 @@ Security: Automated vulnerability scanning ensures production-ready deployments
 Portfolio Ready: Demonstrates end-to-end cloud monitoring workflow
 
 
-Project Highlights
-
+**Project Highlights
+**
 Lightweight Python-based monitoring toolkit for cloud ops
 
 Fully modular and extensible architecture
