@@ -27,6 +27,8 @@ Architecture Overview
              | Scheduler     |
              | Periodic Jobs |
              +---------------+
+
+
 Flask API: Exposes /health and /metrics endpoints for real-time monitoring.
 
 Metrics Collector: Gathers system metrics using psutil with CI-safe dummy fallbacks.
