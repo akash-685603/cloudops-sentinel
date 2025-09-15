@@ -1,86 +1,55 @@
 CloudOps Sentinel 🚀
-A compact Python-based DevOps toolkit for monitoring, alerting, packaging, and cloud automation. This project is designed as a portfolio-ready demonstration of modern DevOps practices, integrating CI/CD, containerization, and cloud integration for real-world reliability and scalability.
 
-Architecture Overview
+A compact Python-based DevOps toolkit for monitoring, alerting, packaging, and cloud automation.
+Built to showcase modern DevOps practices — CI/CD, containerization, security, and cloud integration — in a lightweight, portfolio-ready project.
 
-          +--------------------+
-          |   Flask API        |
-          |  /health /metrics  |
-          +---------+----------+
-                    |
-                    v
-          +--------------------+
-          | Metrics Collector  |
-          | (psutil / dummy)   |
-          +---------+----------+
-                    |
-         +----------+-----------+
-         |                      |
-         v                      v
-+----------------+       +----------------+
-| Alerting       |       | Log Backup     |
-| Slack / Email  |       | S3 Upload      |
-+----------------+       +----------------+
-                    |
-                    v
-             +---------------+
-             | Scheduler     |
-             | Periodic Jobs |
-             +---------------+
+Architecture
++-----------+       +----------------+       +---------------+
+| Flask API | --->  | Metrics (psutil| --->  | Scheduler     |
+| /health   |       |  / dummy)      |       | Periodic Jobs |
++-----------+       +----------------+       +---------------+
+                        |         |
+                        v         v
+                 +-----------+   +-----------+
+                 | Alerting  |   | Log Backup|
+                 | Slack/Email|  |   S3      |
+                 +-----------+   +-----------+
 
+🔹 Features
 
-Flask API: Exposes /health and /metrics endpoints for real-time monitoring.
+Flask API → /health & /metrics endpoints
 
-Metrics Collector: Gathers system metrics using psutil with CI-safe dummy fallbacks.
+Metrics Collector → psutil w/ CI-safe fallbacks
 
-Alerting: Sends notifications via Slack and email on anomalies.
+Alerting → Slack & email notifications
 
-Scheduler: Automates periodic health checks, metric collection, and alerting.
+Scheduler → Automated health checks & jobs
 
-Log Backup: Securely uploads logs to S3 for auditing and retention.
+🔹 DevOps Integrations
 
-DevOps Integrations
-Containerization: Docker & Docker Compose for consistent, reproducible environments.
+Containerization → Docker + Compose
 
-CI/CD: GitHub Actions pipeline automates testing, builds, and Trivy security scanning.
+CI/CD → GitHub Actions (tests, builds, Trivy scans)
 
-Security: Automated vulnerability scans keep deployments production-ready.
+Security → Automated vuln scanning
 
-Portfolio Ready: End-to-end workflow illustrates cloud monitoring best practices.
+Portfolio Ready → End-to-end cloud monitoring workflow
 
-Project Highlights
-Lightweight Python toolkit for cloud ops monitoring
-
-Modular and extensible system by design
-
-Integrates monitoring, alerting, backup, and CI/CD in a single project
-
-Perfect fit for portfolio presentations and LinkedIn demos
-
-Getting Started
-Clone the repo and spin up the development environment using Docker or directly with Python & Flask.
-Configure integrations and scheduler as per your cloud provider and notification preferences.
-
-
-# Start with Docker (recommended)
+🔹 Quick Start
+          
+# With Docker (recommended)
 docker-compose up
 
 # Or run locally
 python app.py
-Tech Stack
-Python 3.x
 
-Flask (REST API)
+🔹 Tech Stack
 
-psutil (Metrics Collection)
+Python 3.x • Flask • psutil • Docker • GitHub Actions • Trivy • Slack • AWS S3
 
-Docker, Docker Compose
+🔹 License
 
-GitHub Actions
+MIT License • Open Source
 
-Trivy (Security Scan)
 
-Slack, AWS S3 (Integrations)
-
-License
-This project is open-source and available under the MIT License.
+Log Backup → Uploads securely to S3
