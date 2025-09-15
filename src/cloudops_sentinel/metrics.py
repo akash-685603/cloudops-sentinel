@@ -5,43 +5,44 @@ import psutil
 import requests
 
 # === Configuration ===
-INSERT_KEY = os.getenv("NEW_RELIC_INSERT_KEY")
-if not INSERT_KEY:
-    raise ValueError("Set NEW_RELIC_INSERT_KEY environment variable!")
-
 REGION = "us"  # change to "eu" if your account is EU
-URL = f"https://metric-api.newrelic.com/metric/v1"
+URL = "https://metric-api.newrelic.com/metric/v1"
 SLEEP_INTERVAL = 5  # seconds between metrics sends
 HOST_NAME = "CloudOps Sentinel"  # custom host name
+
+def get_insert_key():
+    """Fetch API key, raise error only when needed (not at import)."""
+    insert_key = os.getenv("NEW_RELIC_INSERT_KEY")
+    if not insert_key:
+        raise ValueError("Set NEW_RELIC_INSERT_KEY environment variable!")
+    return insert_key
 
 # === Function to gather system metrics ===
 def gather_metrics():
     timestamp = int(time.time())
     return [
         {
-            "common": {
-                "attributes": {"host": HOST_NAME}
-            },
+            "common": {"attributes": {"host": HOST_NAME}},
             "metrics": [
                 {
                     "name": "Custom/CPU/Percent",
                     "type": "gauge",
                     "value": psutil.cpu_percent(interval=1),
-                    "timestamp": timestamp
+                    "timestamp": timestamp,
                 },
                 {
                     "name": "Custom/Memory/UsedPercent",
                     "type": "gauge",
                     "value": psutil.virtual_memory().percent,
-                    "timestamp": timestamp
+                    "timestamp": timestamp,
                 },
                 {
                     "name": "Custom/Disk/UsedPercent",
                     "type": "gauge",
-                    "value": psutil.disk_usage('/').percent,
-                    "timestamp": timestamp
-                }
-            ]
+                    "value": psutil.disk_usage("/").percent,
+                    "timestamp": timestamp,
+                },
+            ],
         }
     ]
 
@@ -49,8 +50,8 @@ def gather_metrics():
 def send_metrics():
     payload = gather_metrics()
     headers = {
-        "Api-Key": INSERT_KEY,
-        "Content-Type": "application/json"
+        "Api-Key": get_insert_key(),
+        "Content-Type": "application/json",
     }
     try:
         response = requests.post(URL, headers=headers, data=json.dumps(payload))
